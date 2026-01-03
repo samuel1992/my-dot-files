@@ -37,7 +37,7 @@ function M.setup()
 	keymap("n", "<Leader>qq", ":bd<CR>", opts)
 
 	-- Clipboard
-	keymap("n", "<Leader>y", '"+y', opts)
+	keymap({"n", "v"}, "<Leader>y", '"+y', opts)
 	keymap("n", "<Leader>p", '"+p', opts)
 
 	---- Telescope ----

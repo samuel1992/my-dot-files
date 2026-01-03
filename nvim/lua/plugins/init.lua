@@ -330,7 +330,7 @@ return {
 		config = function()
 			require("tmux").setup({
 				copy_sync = {
-					enable = true,
+					enable = false,
 				},
 			})
 		end,
@@ -419,10 +419,10 @@ return {
 			vim.keymap.set("n", "<C-e>", function()
 				harpoon.ui:toggle_quick_menu(harpoon:list())
 			end)
-			vim.keymap.set("n", "<C-S-p>", function()
+			vim.keymap.set("n", "<C-S-P>", function()
 				harpoon:list():prev()
 			end)
-			vim.keymap.set("n", "<C-S-n>", function()
+			vim.keymap.set("n", "<C-S-N>", function()
 				harpoon:list():next()
 			end)
 		end,

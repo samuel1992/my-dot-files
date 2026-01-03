@@ -4,7 +4,7 @@ local api = vim.api
 
 -- General options
 opt.backup = false
-opt.clipboard = "unnamedplus"
+-- opt.clipboard = "unnamedplus"  -- Disabled to keep y/p internal to vim
 opt.cmdheight = 0
 opt.completeopt = { "menuone", "noselect" }
 opt.conceallevel = 0
