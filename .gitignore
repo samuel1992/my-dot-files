@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Vim swap files
+*.swp
+*.swo
+*~
+.*.sw[a-p]
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+*~
+
+# Log files
+*.log
+
+# Claude Code plans (optional - remove this line if you want to keep plans)
+.claude/
+
+# Sensitive files (if accidentally copied)
+.aikeys.sh
+.sshclients.sh
+*secrets*
+*credentials*

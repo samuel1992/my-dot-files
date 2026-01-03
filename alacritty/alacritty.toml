@@ -1,0 +1,15 @@
+[general]
+import = [
+  "~/.config/alacritty/themes/themes/solarized_dark.toml"
+]
+
+[font]
+size = 14
+offset = { x = 0, y = -1 }
+builtin_box_drawing = true
+normal = { family = "agave Nerd Font Mono", style = "r" }
+
+[window]
+padding = { x = 0, y = 0 }
+dynamic_padding = false
+resize_increments = false
