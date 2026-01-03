@@ -15,9 +15,6 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
-# My workspace default folder
-alias workspace='cd $HOME/workspace'
-
 # Git branch in prompt
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
@@ -39,14 +36,19 @@ export LLPPATH=/Users/samuel/workspace/llp-local
 defaults write com.todesktop.230313mzl4w4u92 ApplePressAndHoldEnabled -bool false
 
 # Source custom scripts
+source ~/.aikeys.sh
+source ~/.sshclients.sh
+
 # NOTE: The following lines are commented out for security.
 # Create your own ~/.aikeys.sh and ~/.sshclients.sh files with your sensitive data.
-# source ~/.aikeys.sh
-# source ~/.sshclients.sh
-
-# PATH additions
-export PATH="$PATH:/Users/samuel/.local/bin"
+# # PATH additions
+# export PATH="$PATH:/Users/samuel/.local/bin"
 export PATH="$PATH:/opt/homebrew/bin"
 
-# Aliases
+## Aliases
+
+# Avante cli
 alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
+
+# My workspace default folder
+alias workspace='cd $HOME/workspace'
