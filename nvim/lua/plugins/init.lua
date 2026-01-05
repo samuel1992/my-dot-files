@@ -18,8 +18,11 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			local actions = require("telescope.actions")
+      local telescope = require("telescope")
 
-			require("telescope").setup({
+      telescope.load_extension("harpoon")
+
+			telescope.setup({
 				defaults = {
 					mappings = {
 						i = {
@@ -412,19 +415,16 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			local harpoon = require("harpoon")
+      local telescope = require("telescope")
+
 			harpoon.setup()
-			vim.keymap.set("n", "<leader>ha", function()
-				harpoon:list():add()
-			end)
-			vim.keymap.set("n", "<C-e>", function()
-				harpoon.ui:toggle_quick_menu(harpoon:list())
-			end)
-			vim.keymap.set("n", "<C-S-P>", function()
-				harpoon:list():prev()
-			end)
-			vim.keymap.set("n", "<C-S-N>", function()
-				harpoon:list():next()
-			end)
+
+			vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
+			vim.keymap.set("n", "<leader>hd", function() harpoon:list():remove() end)
+      vim.keymap.set("n", "<leader>hm", telescope.extensions.harpoon.marks)
+
+			vim.keymap.set("n", "<C-p>", function() harpoon:list():prev() end)
+			vim.keymap.set("n", "<C-n>", function() harpoon:list():next() end)
 		end,
 	},
 }
