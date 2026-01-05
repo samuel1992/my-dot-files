@@ -4,11 +4,9 @@ bindkey -M viins '^L' clear-screen
 bindkey -M viins '^R' history-incremental-search-backward
 bindkey -M vicmd '^R' history-incremental-search-backward
 
-# iTerm2 shell integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# Git completion (zsh has built-in git completion via compinit)
-autoload -Uz compinit && compinit
+# Zsh completions
+source "$HOME/._zsh_docker_completion"
+autoload -Uz compinit && compinit 
 
 # Homebrew completion (if available)
 if type brew &>/dev/null; then
@@ -39,12 +37,12 @@ defaults write com.todesktop.230313mzl4w4u92 ApplePressAndHoldEnabled -bool fals
 source ~/.aikeys.sh
 source ~/.sshclients.sh
 
+# PATH additions
+export PATH="$PATH:/Users/samuel/.local/bin"
 # NOTE: The following lines are commented out for security.
 # Create your own ~/.aikeys.sh and ~/.sshclients.sh files with your sensitive data.
-# # PATH additions
-# export PATH="$PATH:/Users/samuel/.local/bin"
-export PATH="$PATH:/opt/homebrew/bin"
-
+# export PATH="$PATH:/opt/homebrew/bin"
+# 
 ## Aliases
 
 # Avante cli
