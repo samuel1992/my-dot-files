@@ -70,6 +70,15 @@ else
     echo "  ✗ Neovim configuration directory not found"
 fi
 
+# Sync tmux.conf
+echo "Syncing tmux configuration..."
+if [ -f "$HOME/.tmux.conf" ]; then
+    cp "$HOME/.tmux.conf" .
+    echo "  ✓ Copied .tmux.conf"
+else
+    echo "  ✗ .tmux.conf not found"
+fi
+
 echo ""
 echo "Sync complete!"
 echo ""

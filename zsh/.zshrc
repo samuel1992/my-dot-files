@@ -5,8 +5,8 @@ bindkey -M viins '^R' history-incremental-search-backward
 bindkey -M vicmd '^R' history-incremental-search-backward
 
 # Zsh completions
-source "$HOME/._zsh_docker_completion"
 autoload -Uz compinit && compinit 
+source "$HOME/._zsh_docker_completion"
 
 # Homebrew completion (if available)
 if type brew &>/dev/null; then

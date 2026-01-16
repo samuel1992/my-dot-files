@@ -18,9 +18,9 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			local actions = require("telescope.actions")
-      local telescope = require("telescope")
+			local telescope = require("telescope")
 
-      telescope.load_extension("harpoon")
+			telescope.load_extension("harpoon")
 
 			telescope.setup({
 				defaults = {
@@ -408,6 +408,82 @@ return {
 		ft = { "markdown" },
 	},
 
+	{
+		"mistricky/codesnap.nvim",
+		tag = "v2.0.0-beta.17",
+		opts = {
+			show_line_number = true,
+			highlight_color = "#ffffff20",
+			show_workspace = true,
+			snapshot_config = {
+				theme = "candy",
+				window = {
+					mac_window_bar = false,
+					shadow = {
+						radius = 0,
+						color = "#00000000",
+					},
+					margin = {
+						x = 15,
+						y = 15,
+					},
+					border = {
+						width = 0,
+						color = "#ffffff00",
+					},
+					title_config = {
+						color = "#ffffff",
+						font_family = "Pacifico",
+					},
+				},
+				themes_folders = {},
+				fonts_folders = {},
+				line_number_color = "#495162",
+				command_output_config = {
+					prompt = "❯",
+					font_family = "CaskaydiaCove Nerd Font",
+					prompt_color = "#F78FB3",
+					command_color = "#98C379",
+					string_arg_color = "#ff0000",
+				},
+				code_config = {
+					font_family = "CaskaydiaCove Nerd Font",
+					breadcrumbs = {
+						enable = true,
+						separator = "/",
+						color = "#80848b",
+						font_family = "CaskaydiaCove Nerd Font",
+					},
+				},
+				watermark = {
+					content = "CodeSnap.nvim",
+					font_family = "Pacifico",
+					color = "#ffffff",
+				},
+				background = {
+					start = {
+						x = 0,
+						y = 0,
+					},
+					["end"] = {
+						x = "max",
+						y = 0,
+					},
+					stops = {
+						{
+							position = 0,
+							color = "#6bcba5",
+						},
+						{
+							position = 1,
+							color = "#caf4c2",
+						},
+					},
+				},
+			},
+		},
+	},
+
 	-- Harpoon
 	{
 		"ThePrimeagen/harpoon",
@@ -415,16 +491,30 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			local harpoon = require("harpoon")
-      local telescope = require("telescope")
+			local telescope = require("telescope")
 
-			harpoon.setup()
+			harpoon.setup({
+				settings = { save_on_toggle = true },
+			})
 
-			vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
-			vim.keymap.set("n", "<leader>hd", function() harpoon:list():remove() end)
-      vim.keymap.set("n", "<leader>hm", telescope.extensions.harpoon.marks)
+			vim.keymap.set("n", "<C-e>", function()
+				harpoon.ui:toggle_quick_menu(harpoon:list())
+			end)
 
-			vim.keymap.set("n", "<C-p>", function() harpoon:list():prev() end)
-			vim.keymap.set("n", "<C-n>", function() harpoon:list():next() end)
+			vim.keymap.set("n", "<leader>ha", function()
+				harpoon:list():add()
+			end)
+			vim.keymap.set("n", "<leader>hd", function()
+				harpoon:list():remove()
+			end)
+			vim.keymap.set("n", "<leader>hm", telescope.extensions.harpoon.marks)
+
+			vim.keymap.set("n", "<C-p>", function()
+				harpoon:list():prev()
+			end)
+			vim.keymap.set("n", "<C-n>", function()
+				harpoon:list():next()
+			end)
 		end,
 	},
 }
